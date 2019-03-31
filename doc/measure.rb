@@ -21,7 +21,9 @@ def work
 end
 
 def no_clean; end
+
 def gc_trim
+  return unless @times_worked % 10 == 0
   GC.start
   MallocTrim.trim
 end
@@ -31,11 +33,12 @@ def autotrim
   @already_enabled = true
 end
 
-# no_clean   5.8890778870066365 work/sec (2945 runs in 500.0782901 seconds)
-# gc_trim    5.343061319232702  work/sec (2672 runs in 500.0878411 seconds)
-# autotrim   5.809774973471818  work/sec (2905 runs in 500.0193662 seconds)
-# arena_max  6.038712373814729 work/sec (3020 runs in 500.1066143 seconds)
-# arena_trim 
+# no_clean    5.8890778870066365 work/sec (2945 runs in 500.0782901 seconds)
+# gc_trim     5.343061319232702  work/sec (2672 runs in 500.0878411 seconds)
+# gc_trim_100 6.22370192699887 work/sec (3112 runs in 500.0239466 seconds)
+# autotrim    5.809774973471818  work/sec (2905 runs in 500.0193662 seconds)
+# arena_max   6.038712373814729 work/sec (3020 runs in 500.1066143 seconds)
+# arena_trim  5.609742875191419 work/sec (2805 runs in 500.0229177 seconds)
 def clean
   # no_clean
   gc_trim
