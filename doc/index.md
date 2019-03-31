@@ -22,7 +22,7 @@ The measure script ran 500 seconds where `gc_trim` was slower than the other app
 
 For some reason `autotrim` seems not to be effective. Setting of `MALLOC_ARENA_MAX` seems not to reduce memory usage as much in this workload.
 
-Since trimmings seems to work nice on this workload, but perform slower, we experimented with only running it every 10th (`gc_trim_100`) iteration or every 100th (`gc_trim_10`) iteration.
+Since trimmings seems to work nice on this workload, but perform slower, we experimented with only running it every 10th (`gc_trim_10`) iteration or every 100th (`gc_trim_100`) iteration.
 
 ![](comparison_extended.png)
 
